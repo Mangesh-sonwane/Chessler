@@ -1,0 +1,40 @@
+<Routes>
+        {/* <Navbar /> */}
+        <Route path='/' element={<Loading />} />
+        <Route exact path='/leaderboard' element={<Leaderboard />}></Route>
+        <Route path='/auth' element={<Auth />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
+      </Routes>
+
+<Routes>
+        <Route path='/' element={<Navbar />}>
+          <Route index element={<Loading />} />
+          <Route path='/leaderboard' element={<Leaderboard />} />
+          <Route path='/auth' element={<Auth />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+          </Route>
+        </Route>
+      </Routes>
+
+const redirectUrl = 
+`https://lichess.org/oauth?
+response_type=code
+&client_id=chessler&
+redirect_uri=http://localhost:3000/dashboard&scope=email:read 
+challenge:read challenge:write tournament:write team:write 
+&state=${state}&
+code_challenge_method=S256&
+code_verifier=${code_verifier}`;
+
+const redirectUrl = 
+`https://lichess.org/oauth?
+response_type=code
+&client_id=primechess&
+redirect_uri=http://localhost:5173/auth&scope=email:read 
+challenge:read challenge:write tournament:write team:write 
+&state=${state}
+&code_challenge_method=S256
+&code_verifier=${code_verifier}`;
